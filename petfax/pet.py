@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect
 
 bp = Blueprint(
     "pet",
@@ -22,6 +22,8 @@ def show(index):
     pet = pets[index]
     return render_template('show.html', pet=pet)
 
-@bp.route('/new', methods=['GET'])
+@bp.route('/new', methods=['GET', 'POST'])
 def new():
+    if request.method == "POST":
+        return redirect(url_for('pet.new'))
     return render_template('new_fact.html')

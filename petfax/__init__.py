@@ -10,4 +10,7 @@ def create_app():
     from . import pet
     app.register_blueprint(pet.bp)
 
+    from . import facts
+    app.register_blueprint(facts.bp_facts)
+
     return app
